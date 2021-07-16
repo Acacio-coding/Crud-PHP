@@ -1,0 +1,669 @@
+/* ================ Global ================ */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    --bg-primary: hsl(0, 0%, 5%);
+    --bg-secondary: hsl(0, 0%, 20%);
+    --bg-terciary: hsl(0, 0%, 40%);
+    --text-primary: hsl(0, 0%, 100%);
+    --text-secondary: hsl(0, 0%, 40%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-terciary);
+}
+
+main {
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+span {
+    font-size: 1.2em;
+    color: var(--bg-terciary);
+}
+
+:focus {
+    outline: none;
+}
+
+.window {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    width: 100%;
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    animation: slide_x 0.5s ease-in forwards;
+}
+
+.title h1 {
+    color: var(--text-primary);
+    animation: opacity 2.5s ease-in-out;
+}
+
+.title h2 {
+    color: var(--text-primary);
+    animation: opacity 2.5s ease-in-out;
+}
+
+.title #has_client {
+    color: var(--bg-primary);
+    font-size: 1.1em;
+}
+
+.search {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.search form {
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.search form input {
+    height: 2.5em;
+    padding-left: 3em;
+    border-radius: 0.25em;
+    color: #787878;
+    font-weight: bold;
+}
+
+.search form input::placeholder, 
+.search form input::placeholder {
+    font-weight: bold;
+    color: #000000 !important;
+}
+
+.search form button {
+    padding: 0.8em 2em;
+    border-radius: 1.5em;
+    cursor: pointer;
+    color: var(--text-secondary);
+    background-color: var(--bg-primary);
+    transition: 200ms ease-in-out;
+}
+
+.search form i {
+    font-size: 1.25em;
+}
+
+.search form button:hover,
+.search form button:focus {
+    transform: scale(1.1);
+    color: var(--text-primary);
+}
+
+.search form a {
+    padding: 0.8em 2em;
+    border-radius: 1.5em;
+    cursor: pointer;
+    color: var(--text-secondary);
+    background-color: var(--bg-primary);
+    transition: 200ms ease-in-out;
+}
+
+.search form a:hover,
+.search form a:focus {
+    transform: scale(1.1);
+    color: var(--text-primary);
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content .logo-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+.content .logo-center .logo {
+    display: flex;
+    align-items: center;
+    padding: 1.5em;
+    border-radius: 50%;
+    background-color: var(--bg-secondary);
+}
+
+.content .logo-center .logo svg {
+    color: var(--text-primary);
+}
+
+.content form {
+    padding: 2em 2em 1.5em 2em;
+    border-radius: 1em;
+    background-color: var(--bg-primary);
+    margin-top: 1em;
+}
+
+.content form input,
+.content form input {
+    width: 25em;
+    height: 2.5em;
+    border-radius: 0.25em;
+    padding-left: 3em;
+    font-size: 1.05em;
+    color: #787878;
+    font-weight: bold;
+}
+
+.content form input::placeholder, 
+.content form input::placeholder {
+    font-weight: bold;
+    color: #000000 !important;
+}
+
+.content form input[type="checkbox"]{
+    margin-top: 0.8em;
+    width: 1.15em;
+    height: 1.15em;
+}
+
+.content form .label_checkbox {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-left: 0.25em;
+}
+
+.content form select {  
+    width: 100%;
+    height: 2.5em;
+    padding-left: 2.75em;
+    border-radius: 0.25em;
+    font-size: 1.05em;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    color: #6b6b6b;
+}
+
+.content form select option {
+    color: #696969;
+}
+ 
+
+.user {
+    background-image: url(/includes/public/img/user.svg);
+    background-size: 1.55em;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 5px;
+}
+
+.identifier {
+    background-image: url(/includes/public/img/identifier.svg);
+    background-size: 1.45em;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 5px;
+}
+
+.value {
+    background-image: url(/includes/public/img/value.svg);
+    background-size: 1.6em;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 5px;
+}
+
+.purchase {
+    background-image: url(/includes/public/img/purchase.svg);
+    background-size: 1.55em;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 5px;
+}
+
+.payment {
+    background-image: url(/includes/public/img/payment.svg);
+    background-size: 1.55em;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 5px;
+}
+
+.button-center {
+    display: flex;
+    justify-content: center;
+}
+
+.button-center button {
+    padding: 1em 1.25em;
+    border-radius: 1.8em;
+    font-size: 1.15em;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary);
+    transition: 200ms ease-in-out;
+}
+
+.button-center button:hover,
+.button-center button:focus {
+    transform: scale(1.15);
+    color: var(--text-primary);
+}
+
+.button-center i {
+    font-size: 1.5em;
+    padding: 0 1.25em;
+}
+
+.content table thead th {
+    height: 2.5em;
+    font-size: 1.2em;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+.content table tbody td {
+    height: 2.5em;
+    font-size: 1.2em;
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    border-bottom: solid 1px var(--bg-primary);
+}
+
+.content table tbody td a i {
+    font-size: 1.8em;
+    color: var(--text-primary);
+    transition: 200ms ease-in-out;
+}
+
+.content table tbody td a i:hover,
+.content table tbody td a i:focus {
+    color: var(--text-secondary);
+}
+
+
+/* ================ Nav ================ */
+.main_nav { 
+    background-color: var(--bg-primary);
+    position: relative;
+}
+
+.main_nav a h1 {
+    padding: 0 0.30em;
+    border-radius: 1em;
+    font-size: 3em;
+    font-family: 'Petit Formal Script', cursive;
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1%;
+    color: var(--text-primary);
+    background-color: hsl(0, 0%, 14%);
+    transition: 300ms ease-in-out;
+    animation: opacity 1.5s ease-in-out;
+}
+
+.main_nav a h1:hover,
+.main_nav a h1:focus {
+    background-color: var(--bg-secondary);  
+}
+
+.main_nav ul {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+}
+
+.main_nav a i {
+    font-size: 3em;
+    color: var(--text-primary);
+    transition: 200ms ease-in-out;
+    animation: fade_up 0.8s;
+}
+
+.main_nav a i:hover,
+.main_nav a i:focus {
+    font-size: 3.5em;
+    color: var(--text-secondary);
+}
+
+.main_nav .active {
+    pointer-events: none;
+}
+
+.main_nav .active i {
+    color: var(--bg-secondary);
+}
+
+
+/* ================ Sub-nav ================ */
+.sub_nav {
+    background-color: hsl(0, 0%, 12%);
+    animation: slide_x 0.5s ease-in forwards;
+}
+
+.sub_nav ul {
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.sub_nav a i {
+    font-size: 1.8em;
+    color: var(--text-primary);
+    transition: 200ms ease-in-out;
+    animation: opacity 2.5s ease-in-out;
+}
+
+.sub_nav a i:hover,
+.sub_nav a i:focus {
+    font-size: 2em;
+    color: var(--text-secondary);
+}
+
+
+/* ================ Client ================ */
+.content .table_client {
+    width: 80%;
+    text-align: center;
+    overflow-y: auto;
+    border-collapse: collapse;
+}
+
+.content .table_client thead th:first-child {
+    width: 5%;
+    border-top-left-radius: 0.25em;
+}
+
+.content .table_client thead th:nth-child(2) {
+    border-left: dashed 1px var(--bg-secondary);
+    width: 17%;
+}
+
+.content .table_client thead th:nth-child(3) {
+    border-left: dashed 1px var(--bg-secondary);
+}
+
+.content .table_client thead th:nth-child(4) {
+    border-left: dashed 1px var(--bg-secondary);
+    width: 15%;
+}
+
+.content .table_client thead th:last-child {
+    border-top-right-radius: 0.25em;
+    border-left: dashed 1px var(--bg-secondary);
+    width: 10%;
+}
+
+.content .table_client tbody .client_name {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_client tbody .client_identifier {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_client tbody .client_account {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_client tbody .client_actions {
+    border-left: solid 1px var(--bg-primary);
+}
+
+
+/* ================ Purchase ================ */
+.content .table_purchase {
+    width: 85%;
+    text-align: center;
+    overflow-y: auto;
+    border-collapse: collapse;
+}
+
+.content .table_purchase thead .purchase_id {
+    border-top-left-radius: 0.25em;
+    width: 12%;
+}
+
+.content .table_purchase thead .purchase_description {
+    border-left: dashed 1px var(--bg-secondary);
+}
+
+.content .table_purchase thead .purchase_date {
+    border-left: dashed 1px var(--bg-secondary);
+    width: 10%;
+}
+
+.content .table_purchase thead .purchase_value {
+    border-left: dashed 1px var(--bg-secondary);
+    width: 12%;
+}
+
+.content .table_purchase thead .purchase_action {
+    border-left: dashed 1px var(--bg-secondary);
+    width: 10%;
+}
+
+.content .table_purchase thead th:last-child {
+    border-top-right-radius: 0.25em;
+}
+
+.content .table_purchase tbody .purchase_description {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_purchase tbody .purchase_date {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_purchase tbody .purchase_value {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_purchase tbody .purchase_action {
+    border-left: solid 1px var(--bg-primary);
+}
+
+
+
+/* ================ Payment ================ */
+.content .table_payment {
+    width: 70%;
+    text-align: center;
+    overflow-y: auto;
+    border-collapse: collapse;
+}
+
+.content .table_payment thead .payment_id {
+    width: 16%;
+    border-top-left-radius: 0.25em;
+}   
+
+.content .table_payment thead .payment_method {
+    border-left: dashed 1px var(--bg-secondary);
+}
+
+.content .table_payment thead .payment_date {
+    border-left: dashed 1px var(--bg-secondary);
+    width: 15%;
+}
+
+.content .table_payment thead .payment_amount {
+    border-left: dashed 1px var(--bg-secondary);
+    width: 12%;
+}
+
+.content .table_payment thead .payment_action {
+    border-left: dashed 1px var(--bg-secondary);
+    width: 10%;
+}
+
+.content .table_payment thead th:last-child {
+    border-top-right-radius: 0.25em;
+}
+
+.content .table_payment tbody .payment_method {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_payment tbody .payment_date {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_payment tbody .payment_amount {
+    border-left: solid 1px var(--bg-primary);
+}
+
+.content .table_payment tbody .payment_action {
+    border-left: solid 1px var(--bg-primary);
+}
+
+
+/* ================ Messages ================ */
+.message_window {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message_content_success {
+    width: 18em;
+    height: 15em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    background-color: hsl(115, 100%, 10%);
+    animation: show_message 0.75s ease-in forwards;
+}
+
+.message_content_success i {
+    color: hsl(115, 100%, 30%);
+    padding: 0.25em;
+    background-color: hsl(115, 100%, 15%);
+    border-radius: 50%;
+    font-size: 4em;
+}
+
+.message_content_success h2 {
+    font-size: 1.4em;
+    text-align: center;
+    color: hsl(115, 100%, 30%);
+}
+
+.message_content_error {
+    width: 18em;
+    height: 15em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    background-color: hsl(0, 100%, 9%);
+    animation: show_message 0.75s ease-in forwards;
+}
+
+.message_content_error i {
+    color: hsl(0, 100%, 30%);
+    padding: 0.25em 0.40em;
+    background-color: hsl(0, 100%, 12%);
+    border-radius: 50%;
+    font-size: 4em;
+}
+
+.message_content_error h2 {
+    font-size: 1.4em;
+    text-align: center;
+    color: hsl(0, 100%, 20%);
+}
+
+
+/* ================ Keyframes ================ */
+@keyframes fade_up {
+    from {
+        opacity: 0;
+        transform: translateY(45%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slide_x {
+    0% {    
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes show_message {
+    0% {
+        transform: translateY(-300%);
+    }
+
+    100% {
+        transform: translateY(0%); 
+    }
+}
